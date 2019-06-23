@@ -9,7 +9,6 @@ namespace Lesson7_Taxi
         string phone;
         DateTime birthday;
 
-
         public string Name { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
@@ -37,8 +36,13 @@ namespace Lesson7_Taxi
 
         public override string ToString()
         {
-            return $"{Name}" + (Birthday != DateTime.MinValue ? " (" + Birthday.ToShortDateString() + ")" : "") + "\n" +
-                $"tel: {Phone}\n" + (Address != "" ? Address : "");
+            return $"{Name}" + (Birthday != DateTime.MinValue ? " (" + Birthday.ToShortDateString() + ")" : "") +
+                $", tel: {Phone}" + (Address != null && Address != "" ? "\n"+Address : "");
+        }
+
+        public bool FindByName(string name)
+        {
+            return (Name.ToUpper().Contains(name.ToUpper()));
         }
     }
 }

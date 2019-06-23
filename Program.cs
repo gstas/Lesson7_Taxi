@@ -36,30 +36,45 @@ namespace Lesson7_Taxi
             Driver driver4 = new Driver(driver3);
             driver4.Name = "Федоров Федр";
             driver4.Birthday = new DateTime(1990, 5, 23);
-
-
-            Auto auto1 = new Auto(
-                "BH0001HH", 
+        
+            Car car1 = new Car(
+                "ВН0001HH", 
                 Enums.Brand.Toyota, 
                 Enums.Model.Camry, 
                 new Driver[] { driver1 },
                 50f
             );
 
-            Auto auto2 = new Auto(
-                "BH0002HH",
+            Car car2 = new Car(
+                "ВН0002HH",
                 Enums.Brand.Kia,
                 Enums.Model.Sportage,
                 new Driver[] { driver1, driver4 },
                 75.5f,
-                Enums.AutoColor.Red,
-                Enums.AutoType.SUV
+                Enums.CarColor.Red,
+                Enums.CarType.SUV
             );
 
-            Console.WriteLine(auto1);
-            Console.WriteLine(auto2);
+            //Console.WriteLine(car1);
+            //Console.WriteLine();
+            //Console.WriteLine(car2);
+            //Console.WriteLine();
 
+            TaxiPark taxiPark1 = new TaxiPark();
+            taxiPark1.AddCar(car1);
+            taxiPark1.AddCar(car2);
             
+            foreach (Taxi taxi in taxiPark1.FindByNum("ВН000"))
+            {
+                Console.WriteLine(taxi);
+            }
+
+            Console.WriteLine();
+            foreach (Driver driver in taxiPark1.FindDriverByName("ов"))
+            {
+                Console.WriteLine(driver);
+            }
+
 
         }
     }
